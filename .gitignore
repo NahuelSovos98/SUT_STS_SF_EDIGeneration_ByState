@@ -1,0 +1,6 @@
+.local/
+.objects/*
+Exceptions_Screenshots/*
+SovosFiling/Output Json Cookies.txt
+SovosFilingAPI/Output Json Worksheet.txt
+Data/Output.xlsx
