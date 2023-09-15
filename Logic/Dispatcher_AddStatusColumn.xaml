@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1144,946</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Dispatcher_AddStatusColumn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -70,27 +70,34 @@
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Dispatcher_AddStatusColumn" sap:VirtualizedContainerService.HintSize="775,721" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Dispatcher_AddStatusColumn" sap:VirtualizedContainerService.HintSize="1154,881" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;AddStatusColumn starts&quot;]" />
-    <If Condition="[Not io_dtTransactionsData.Columns.Contains(in_ColumnName)]" DisplayName="If datatable does not have status column yet" sap:VirtualizedContainerService.HintSize="713,346" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1092,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;AddStatusColumn starts&quot;]" />
+    <If Condition="[io_dtTransactionsData IsNot Nothing]" DisplayName="If datatable is not nothing" sap:VirtualizedContainerService.HintSize="1092,506" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_ColumnName]" DataTable="[io_dtTransactionsData]" DefaultValue="[in_DefaultStatus]" DisplayName="Add Status Data Column" sap:VirtualizedContainerService.HintSize="334,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+        <If Condition="[Not io_dtTransactionsData.Columns.Contains(in_ColumnName)]" DisplayName="If datatable does not have status column yet" sap:VirtualizedContainerService.HintSize="713,346" sap2010:WorkflowViewState.IdRef="If_1">
+          <If.Then>
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_ColumnName]" DataTable="[io_dtTransactionsData]" DefaultValue="[in_DefaultStatus]" DisplayName="Add Status Data Column" sap:VirtualizedContainerService.HintSize="334,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+          </If.Then>
+          <If.Else>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;This table has already a status column&quot;]" />
+          </If.Else>
+        </If>
       </If.Then>
       <If.Else>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Warn" Message="[&quot;This table has already a status column&quot;]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;Datatable is empty. Cannot add any column&quot;]" />
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;AddStatusColumn ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1092,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;AddStatusColumn ends&quot;]" />
   </Sequence>
 </Activity>

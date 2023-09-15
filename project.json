@@ -1,22 +1,22 @@
 {
-  "name": "SUT_STS_SF_EDIGeneration_Multiple Clients",
-  "description": "It will save all EDI files of returns which Filing Type = \"EDI\".\r\nCapabilities:\r\n- Go through multiple Clients.\r\n- Go through specific states (optional).",
+  "name": "SUT_STS_SF_EDIGeneration_MultipleClients",
+  "description": "It will save all EDI files of returns which Filing Type = \"EDI\".\r\nCapabilities:\r\n- Go through multiple Clients.\r\n- Go through specific states (Optional)",
   "main": "Main.xaml",
   "dependencies": {
-    "SendMailsViaIMR": "[1.0.1]",
+    "SendMailsViaIMR": "[1.0.2]",
     "UiPath.Excel.Activities": "[2.20.1]",
     "UiPath.Form.Activities": "[2.0.3]",
     "UiPath.Mail.Activities": "[1.20.3]",
-    "UiPath.System.Activities": "[23.4.2]",
+    "UiPath.System.Activities": "[23.4.4]",
     "UiPath.Testing.Activities": "[23.4.0]",
-    "UiPath.UIAutomation.Activities": "[23.4.4]",
+    "UiPath.UIAutomation.Activities": "[23.4.8]",
     "UiPath.WebAPI.Activities": "[1.16.2]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.4.0.0",
-  "projectVersion": "1.0.1",
+  "projectVersion": "1.0.3",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,

@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1228,1191</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>989,1217</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckApiResponse_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -82,16 +82,16 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckApiResponse" sap:VirtualizedContainerService.HintSize="657,1126" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckApiResponse" sap:VirtualizedContainerService.HintSize="657,1152" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="595,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CheckAPIResponse starts&quot;]" />
-    <If Condition="[Not in_ResponseStatus.Equals(200)]" DisplayName="If Status is not 200" sap:VirtualizedContainerService.HintSize="595,751" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[Not in_ResponseStatus.Equals(200)]" DisplayName="If Status is not 200" sap:VirtualizedContainerService.HintSize="595,777" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence DisplayName="Show error" sap:VirtualizedContainerService.HintSize="559,563" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Show error" sap:VirtualizedContainerService.HintSize="559,588" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="ErrorMessage" />
             <Variable x:TypeArguments="njl:JObject" Name="JsonResponse" />
@@ -102,9 +102,9 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON - JsonResponse" sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JsonResponse]" JsonString="[in_ResponseContent]" />
-          <Switch x:TypeArguments="x:Int32" DisplayName="Switch - Set ErrorMessage by StatusCode" Expression="[in_ResponseStatus]" sap:VirtualizedContainerService.HintSize="497,287" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+          <Switch x:TypeArguments="x:Int32" DisplayName="Switch - Set ErrorMessage by StatusCode" Expression="[in_ResponseStatus]" sap:VirtualizedContainerService.HintSize="497,312" sap2010:WorkflowViewState.IdRef="Switch`1_1">
             <Switch.Default>
-              <Assign DisplayName="Assign - Default error message" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign DisplayName="Assign - Default error message" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[ErrorMessage]</OutArgument>
                 </Assign.To>
@@ -113,7 +113,7 @@
                 </Assign.Value>
               </Assign>
             </Switch.Default>
-            <Assign x:Key="401" DisplayName="Assign - Unauthorized account" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign x:Key="401" DisplayName="Assign - Unauthorized account" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[ErrorMessage]</OutArgument>
               </Assign.To>
@@ -121,12 +121,20 @@
                 <InArgument x:TypeArguments="x:String">Token is not longer valid. It needs to take a new token.</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign x:Key="400" DisplayName="Assign - Invalid Request Context" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign x:Key="400" DisplayName="Assign - Invalid Request Context" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[ErrorMessage]</OutArgument>
               </Assign.To>
               <Assign.Value>
                 <InArgument x:TypeArguments="x:String">The Request Context in the API Request was invalid. Please check the Request Context format.</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="403" DisplayName="Assign - Unauthorized client" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[ErrorMessage]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">It tried to access to an unathorized client in Sovos Filing. It cannot read anything for that instance.</InArgument>
               </Assign.Value>
             </Assign>
           </Switch>
