@@ -1,15 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="CreateOutputFolder" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_Month" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_Year" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_OrganizationName" Type="InArgument(x:String)" />
     <x:Property Name="out_PathOutputFolder" Type="OutArgument(x:String)" />
+    <x:Property Name="in_State" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>538,1212</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,1186</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateOutputFolder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,10 +67,9 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateOutputFolder" sap:VirtualizedContainerService.HintSize="548,1147" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreateOutputFolder" sap:VirtualizedContainerService.HintSize="548,1121" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SubfolderName" />
     </Sequence.Variables>
@@ -82,7 +79,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;CreateOutputFolder starts&quot;]" />
-    <ui:MultipleAssign sap2010:Annotation.AnnotationText="PathUserOutput folder +&#xD;&#xA;OrganizationName+&#xD;&#xA;Month name + Year" DisplayName="Multiple Assign - PathOutputFolder" sap:VirtualizedContainerService.HintSize="486,220" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign sap2010:Annotation.AnnotationText="PathUserOutput folder + State" DisplayName="Multiple Assign - PathOutputFolder" sap:VirtualizedContainerService.HintSize="486,194" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -98,9 +95,7 @@
               <OutArgument x:TypeArguments="x:String">[SubfolderName]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String" xml:space="preserve">[in_OrganizationName.toUpper + " " + 
-MonthName(in_Month).ToUpper + " " +
-in_Year.ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_State.toUpper]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">

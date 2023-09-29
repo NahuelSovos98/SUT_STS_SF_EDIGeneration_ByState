@@ -1,6 +1,6 @@
 {
-  "name": "SUT_STS_SF_EDIGeneration_MultipleClients",
-  "description": "It will save all EDI files of returns which Filing Type = \"EDI\".\r\nCapabilities:\r\n- Go through multiple Clients.\r\n- Go through specific states (Optional)",
+  "name": "SUT_STS_SF_EDIGeneration_ByState",
+  "description": "It will save all EDI files of returns which Filing Type = \"EDI\".\r\nCapabilities:\r\n- Go through multiple Clients.\r\n- Go through a specific state.",
   "main": "Main.xaml",
   "dependencies": {
     "SendMailsViaIMR": "[1.0.2]",
