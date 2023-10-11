@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Dispatcher_GetReturns" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Dispatcher_GetReturns" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:SovosLibrary_SF_API.CustomFunctions;assembly=SovosLibrary.SF.API" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sh="clr-namespace:SovosLibrary_SF_API.HttpRequests;assembly=SovosLibrary.SF.API" xmlns:su="clr-namespace:SovosLibrary_SF_API.UiFunctions;assembly=SovosLibrary.SF.API" xmlns:sur="clr-namespace:SovosLibrary_SF_API.UiFunctions.Returns;assembly=SovosLibrary.SF.API" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_dtReturns" Type="OutArgument(sd:DataTable)" />
@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>952,4292</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1219,2900</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Dispatcher_GetReturns_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -44,6 +44,22 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>Newtonsoft.Json.Linq</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>SovosLibrary_SF_API.UiFunctions.Returns</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>SovosLibrary_SF_API.UiFunctions</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>SovosLibrary_SF_API.HttpRequests</x:String>
+      <x:String>UiPath.Activities.System</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>SovosLibrary_SF_API.CustomFunctions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -77,10 +93,20 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>SovosLibrary.SF.API</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Dispatcher_GetReturns" sap:VirtualizedContainerService.HintSize="962,4227.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Dispatcher_GetReturns" sap:VirtualizedContainerService.HintSize="558,2835" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Token" />
       <Variable x:TypeArguments="x:String" Name="BearerToken" />
@@ -92,46 +118,20 @@
       <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="ListSelectedStates" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictFailedClients" />
       <Variable x:TypeArguments="x:String" Name="SelectedState" />
+      <Variable x:TypeArguments="x:String" Name="SovosFilingToken" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="900,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Dispatcher_GetReturns starts&quot;]" />
-    <Assign DisplayName="Assign out_dictFailedClients" sap:VirtualizedContainerService.HintSize="900,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
-      <Assign.To>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictFailedClients]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[new Dictionary(Of String, String)]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SovosFiling\CheckSovosFilingPage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="900,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="SovosFiling\CheckSovosFilingPage.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="900,76" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Get Following properties: Token and period." />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\GetSovosFilingProperties.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="900,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Logic\GetSovosFilingProperties.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_BearerToken">[BearerToken]</OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Month">[Month]</OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_Year">[Year]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="900,76" sap2010:WorkflowViewState.IdRef="Comment_5" Text="// Since this is a multiple client case, get list of clients " />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SovosFilingAPI\GetClientList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="900,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="SovosFilingAPI\GetClientList.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Endpoint">[in_Config("API_GetOrganizations_Endpoint").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_XAppID">[in_Config("API_StandardAppId").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_BearerToken">[BearerToken]</InArgument>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_dictClients">[dictClients]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="900,76" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Let user choose the required clients (and states if they need it)" />
-    <Assign DisplayName="Assign ListSelectedClients" sap:VirtualizedContainerService.HintSize="900,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Dispatcher_GetReturns starts&quot;]" />
+    <sur:CheckReturnsPageIsOpen DisplayName="Sovos Filing - CheckReturnsPageIsOpen" sap:VirtualizedContainerService.HintSize="496,25" sap2010:WorkflowViewState.IdRef="CheckReturnsPageIsOpen_1" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="496,56" sap2010:WorkflowViewState.IdRef="Comment_3" Text="// Get Following properties: Token and period." />
+    <su:GetTokenFromWebsite DisplayName="GetTokenFromWebsite - SovosFilingToken" sap:VirtualizedContainerService.HintSize="496,80" sap2010:WorkflowViewState.IdRef="GetTokenFromWebsite_1" out_Token="[Token]" />
+    <sur:GetCurrentPeriod out_Month="{x:Null}" DisplayName="GetCurrentPeriod - Month and year" sap:VirtualizedContainerService.HintSize="496,133" sap2010:WorkflowViewState.IdRef="GetCurrentPeriod_1" out_MonthIndex="[Month]" out_Year="[Year]" />
+    <ui:Comment sap:VirtualizedContainerService.HintSize="496,75" sap2010:WorkflowViewState.IdRef="Comment_4" Text="// Let user choose the required clients (and states if they need it)" />
+    <Assign DisplayName="Assign ListSelectedClients" sap:VirtualizedContainerService.HintSize="496,82" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:List(x:String)">[ListSelectedClients]</OutArgument>
       </Assign.To>
@@ -139,170 +139,68 @@
         <InArgument x:TypeArguments="scg:List(x:String)">[dictClients.Keys.ToList]</InArgument>
       </Assign.Value>
     </Assign>
-    <Sequence DisplayName="Get List of states and display form" sap:VirtualizedContainerService.HintSize="900,381.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence DisplayName="Get List of states and display form" sap:VirtualizedContainerService.HintSize="496,519" sap2010:WorkflowViewState.IdRef="Sequence_9">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:List(x:String)" Name="ListStates" />
+        <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictStates" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetStatesList.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="SovosFilingAPI\GetStatesList.xaml">
+      <sh:GET_States DisplayName="GET_States - ListStates" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="GET_States_1" in_Token="[Token]" out_dictStates="[dictStates]" />
+      <Assign DisplayName="Assign ListStates" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:List(x:String)">[ListStates]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:List(x:String)">[dictStates.Keys.ToList]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\Forms\DisplayFormMultipleStates.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Logic\Forms\DisplayFormMultipleStates.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="in_Endpoint">[in_Config("API_GetStatesList_Endpoint").ToString]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_XAppID">[in_Config("API_StandardAppId").ToString]</InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="in_BearerToken">[BearerToken]</InArgument>
-          <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ListStates">[ListStates]</OutArgument>
-        </ui:InvokeWorkflowFile.Arguments>
-      </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\Forms\DisplayFormMultipleStates.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Logic\Forms\DisplayFormMultipleStates.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListStates">
-            <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="ListStates" />
-          </InArgument>
-          <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ListSelectedState">
-            <mva:VisualBasicReference x:TypeArguments="scg:List(x:String)" ExpressionText="ListSelectedStates" />
-          </OutArgument>
+          <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListStates">[ListStates]</InArgument>
+          <OutArgument x:TypeArguments="scg:List(x:String)" x:Key="out_ListSelectedState">[ListSelectedStates]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="900,76" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// For each client, get returns with EDI files and append to datatable" />
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each selected Client" sap:VirtualizedContainerService.HintSize="900,1655.33333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[ListSelectedClients]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="x:String">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:String" Name="currentItem" />
-          </ActivityAction.Argument>
-          <TryCatch DisplayName="Try Catch - get returns of client" sap:VirtualizedContainerService.HintSize="863.333333333333,1526" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-            <TryCatch.Try>
-              <Sequence DisplayName="Body get returns of client" sap:VirtualizedContainerService.HintSize="824.666666666667,1287.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="x:String" Name="RequestContext" />
-                  <Variable x:TypeArguments="sd:DataTable" Name="dtReturns" />
-                  <Variable x:TypeArguments="x:String" Name="ClientName" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:MultipleAssign DisplayName="Multiple Assign - Constants" sap:VirtualizedContainerService.HintSize="762.666666666667,131.333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
-                  <ui:MultipleAssign.AssignOperations>
-                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="x:String">[RequestContext]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="x:String">[dictClients(currentItem)]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="x:String">[ClientName]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="x:String">[currentItem]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                    </scg:List>
-                  </ui:MultipleAssign.AssignOperations>
-                </ui:MultipleAssign>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetReturnsList_TwoFilters.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="762.666666666667,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="SovosFilingAPI\GetReturnsList_TwoFilters.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_BearerToken">[BearerToken]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_RequestContext">[RequestContext]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="in_Month">[Month]</InArgument>
-                    <InArgument x:TypeArguments="x:Int32" x:Key="in_Year">[Year]</InArgument>
-                    <InArgument x:TypeArguments="scg:List(x:String)" x:Key="in_ListStates">[ListSelectedStates]</InArgument>
-                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtReturns">[dtReturns]</OutArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <ui:Comment sap:VirtualizedContainerService.HintSize="762.666666666667,76" sap2010:WorkflowViewState.IdRef="Comment_8" Text="// Add client and Request Context columns to the datatable" />
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\Dispatcher_AddStatusColumn.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="762.666666666667,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Logic\Dispatcher_AddStatusColumn.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtTransactionsData">[dtReturns]</InOutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">[in_Config("StatusTable_ClientColumn").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_DefaultStatus">[ClientName]</InArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\Dispatcher_AddStatusColumn.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="763,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Logic\Dispatcher_AddStatusColumn.xaml">
-                  <ui:InvokeWorkflowFile.Arguments>
-                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtTransactionsData">[dtReturns]</InOutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">[in_Config("StatusTable_RequestContextColumn").ToString]</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_DefaultStatus">[RequestContext]</InArgument>
-                  </ui:InvokeWorkflowFile.Arguments>
-                </ui:InvokeWorkflowFile>
-                <If Condition="[out_dtReturns is Nothing]" DisplayName="If dtReturns is still empty" sap:VirtualizedContainerService.HintSize="763,293" sap2010:WorkflowViewState.IdRef="If_7">
-                  <If.Then>
-                    <Assign DisplayName="Assign - Initialize out_dtReturns" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="sd:DataTable">[out_dtReturns]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="sd:DataTable">[dtReturns]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </If.Then>
-                  <If.Else>
-                    <ui:MergeDataTable Destination="[out_dtReturns]" DisplayName="Merge both dtReturns" sap:VirtualizedContainerService.HintSize="284,133" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dtReturns]" />
-                  </If.Else>
-                </If>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="763,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Returns of client &lt;&quot;+currentItem+&quot;&gt; added successfully.&quot;]" />
-              </Sequence>
-            </TryCatch.Try>
-            <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="829,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ActivityAction x:TypeArguments="s:Exception">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                  </ActivityAction.Argument>
-                  <If Condition="[Not exception.Message.ToLower.StartsWith(&quot;api response error&quot;)]" DisplayName="If it is not an API exception" sap:VirtualizedContainerService.HintSize="484,271" sap2010:WorkflowViewState.IdRef="If_9">
-                    <If.Then>
-                      <Assign DisplayName="Assign out_dictFailedClients" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[dictFailedClients(currentItem)]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[exception.Message + vbCrLf + "Source: " + exception.Source]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                    </If.Then>
-                    <If.Else>
-                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_13">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Sequence>
-                    </If.Else>
-                  </If>
-                </ActivityAction>
-              </Catch>
-            </TryCatch.Catches>
-          </TryCatch>
-        </ActivityAction>
-      </ui:ForEach.Body>
-    </ui:ForEach>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="899,56" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// Add status column" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\Dispatcher_AddStatusColumn.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="899,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Logic\Dispatcher_AddStatusColumn.xaml">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="496,75" sap2010:WorkflowViewState.IdRef="Comment_2" Text="// For each client, get returns with EDI files and append to datatable" />
+    <Sequence DisplayName="Get Returns of specific states from all clients" sap:VirtualizedContainerService.HintSize="496,504" sap2010:WorkflowViewState.IdRef="Sequence_14">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="BodyFilter" />
+        <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictFailedClients" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="Add List of states in body filter" DisplayName="Assign BodyFilter" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[BodyFilter]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String" xml:space="preserve">[in_Config("API_GetReturnsList_Body_FilterByState").ToString.
+Replace("&lt;LIST_STATES&gt;", String.Join(",",ListSelectedStates))]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <sc:GetReturnsFromAllClients DisplayName="GetReturnsFromAllClients - dtReturns" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="GetReturnsFromAllClients_1" in_BodyFilter="[BodyFilter]" in_Month="[Month]" in_Token="[Token]" in_Year="[Year]" out_dictFailedClients="[dictFailedClients]" out_dtReturns="[out_dtReturns]" />
+    </Sequence>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="496,56" sap2010:WorkflowViewState.IdRef="Comment_6" Text="// Add status column" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\Dispatcher_AddStatusColumn.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="496,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Logic\Dispatcher_AddStatusColumn.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtTransactionsData">[out_dtReturns]</InOutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ColumnName">[in_Config("TransactionsTableFile_StatusColumn").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_DefaultStatus">[in_Config("TransactionsTableFile_DefaultStatus").ToString]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[dictClients.Count &gt; 0]" DisplayName="If some client has failed" sap:VirtualizedContainerService.HintSize="899,302" sap2010:WorkflowViewState.IdRef="If_8">
+    <If Condition="[dictClients.Count &gt; 0]" DisplayName="If some client has failed" sap:VirtualizedContainerService.HintSize="496,302" sap2010:WorkflowViewState.IdRef="If_8">
       <If.Then>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\Popups\ShowFailedClients.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Logic\Popups\ShowFailedClients.xaml">
           <ui:InvokeWorkflowFile.Arguments>
@@ -321,6 +219,6 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="899,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Dispatcher_GetReturns ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Dispatcher_GetReturns ends&quot;]" />
   </Sequence>
 </Activity>

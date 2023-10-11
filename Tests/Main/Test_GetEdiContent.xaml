@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1016,1226" sap2010:WorkflowViewState.IdRef="TestWorkflowTemplate_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1219,1733" sap2010:WorkflowViewState.IdRef="TestWorkflowTemplate_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sh="clr-namespace:SovosLibrary_SF_API.HttpRequests;assembly=SovosLibrary.SF.API" xmlns:shr="clr-namespace:SovosLibrary_SF_API.HttpRequests.ReturnItem;assembly=SovosLibrary.SF.API" xmlns:su="clr-namespace:SovosLibrary_SF_API.UiFunctions;assembly=SovosLibrary.SF.API" xmlns:sur="clr-namespace:SovosLibrary_SF_API.UiFunctions.Returns;assembly=SovosLibrary.SF.API" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -37,6 +37,22 @@
       <x:String>Microsoft.Exchange.WebServices.Data</x:String>
       <x:String>UiPath.Mail.Exchange</x:String>
       <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>SovosLibrary_SF_API.UiFunctions</x:String>
+      <x:String>SovosLibrary_SF_API.UiFunctions.Returns</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>SovosLibrary_SF_API.HttpRequests.ReturnItem</x:String>
+      <x:String>UiPath.Activities.System</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>SovosLibrary_SF_API.HttpRequests</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -76,9 +92,14 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>SovosLibrary.SF.API</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Template workflow used to create tests for workflows in the process.&#xA;Create a new test workflow by copying and renaming this file." DisplayName="Test Template" sap:VirtualizedContainerService.HintSize="547,1161" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Template workflow used to create tests for workflows in the process.&#xA;Create a new test workflow by copying and renaming this file." DisplayName="Test Template" sap:VirtualizedContainerService.HintSize="547,1473" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data." Name="Config" />
       <Variable x:TypeArguments="x:String" Name="BearerToken" />
@@ -86,6 +107,7 @@
       <Variable x:TypeArguments="x:String" Name="ObjectID" />
       <Variable x:TypeArguments="x:String" Name="PathEdiFile" />
       <Variable x:TypeArguments="x:String" Name="PathOutputFolder" />
+      <Variable x:TypeArguments="x:String" Name="OrganizationName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -101,9 +123,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <Sequence DisplayName="... Given" sap:VirtualizedContainerService.HintSize="485,591" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="... Given" sap:VirtualizedContainerService.HintSize="485,762" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="OrganizationName" />
         <Variable x:TypeArguments="x:Int32" Name="Month" />
         <Variable x:TypeArguments="x:Int32" Name="Year" />
       </Sequence.Variables>
@@ -119,17 +140,9 @@
           <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\GetSovosFilingProperties.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="423,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Logic\GetSovosFilingProperties.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_BearerToken">[BearerToken]</OutArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_OrganizationName">[OrganizationName]</OutArgument>
-          <OutArgument x:TypeArguments="x:Int32" x:Key="out_Month">[Month]</OutArgument>
-          <OutArgument x:TypeArguments="x:Int32" x:Key="out_Year">[Year]</OutArgument>
-          <OutArgument x:TypeArguments="x:String" x:Key="out_RequestContext">[RequestContext]</OutArgument>
-        </ui:InvokeWorkflowFile.Arguments>
-      </ui:InvokeWorkflowFile>
-      <ui:MultipleAssign sap2010:Annotation.AnnotationText="126832 Excel file&#xD;&#xA;126824 XML file" DisplayName="Multiple Assign - Inputs" sap:VirtualizedContainerService.HintSize="423,174" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <su:GetTokenFromWebsite sap:VirtualizedContainerService.HintSize="423,80" sap2010:WorkflowViewState.IdRef="GetTokenFromWebsite_1" out_Token="[BearerToken]" />
+      <sur:GetCurrentPeriod out_Month="{x:Null}" sap:VirtualizedContainerService.HintSize="423,133" sap2010:WorkflowViewState.IdRef="GetCurrentPeriod_1" out_MonthIndex="[Month]" out_Year="[Year]" />
+      <ui:MultipleAssign sap2010:Annotation.AnnotationText="126832 Excel file&#xA;126824 XML file" DisplayName="Multiple Assign - Inputs" sap:VirtualizedContainerService.HintSize="423,205" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -148,6 +161,14 @@
                 <InArgument x:TypeArguments="x:String">C:\Users\nahuel.delacruz\Desktop\AZ Bot files</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[OrganizationName]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">Design House Inc</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
         <sap:WorkflowViewStateService.ViewState>
@@ -157,16 +178,27 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SovosFilingAPI\DownloadEDI.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="485,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="SovosFilingAPI\DownloadEDI.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_BearerToken">[BearerToken]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_RequestContext">[RequestContext]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ObjectID">[ObjectID]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[PathOutputFolder]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_PathEdiFile">[PathEdiFile]</OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <Sequence DisplayName="RequestContext" sap:VirtualizedContainerService.HintSize="485,81" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictOrganizations" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <sh:GET_Organizations sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="GET_Organizations_1" in_Token="[BearerToken]" out_dictOrganizations="[dictOrganizations]" />
+      <Assign DisplayName="Assign RequestContext" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[RequestContext]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[dictOrganizations(OrganizationName)]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <shr:POST_Download_EDI sap:VirtualizedContainerService.HintSize="485,133" sap2010:WorkflowViewState.IdRef="POST_Download_EDI_1" in_ObjectId="[ObjectID]" in_PathOutputFolder="[PathOutputFolder]" in_RequestContext="[RequestContext]" in_Token="[BearerToken]" out_PathEdiFile="[PathEdiFile]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="485,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;New file: &quot; + PathEdiFile]" />
   </Sequence>
 </Activity>
