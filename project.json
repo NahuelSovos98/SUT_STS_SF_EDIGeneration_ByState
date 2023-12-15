@@ -1,10 +1,11 @@
 {
   "name": "SUT_STS_SF_EDIGeneration_ByState",
+  "projectId": "afc629bf-486c-460b-819f-759b70ec9449",
   "description": "It will save all EDI files of returns which Filing Type = \"EDI\".\r\nCapabilities:\r\n- Go through all Clients.\r\n- User can pick specific states (filter).",
   "main": "Main.xaml",
   "dependencies": {
     "SendMailsViaIMR": "[1.0.2]",
-    "SovosLibrary.SF.API": "[1.0.0-alpha.2]",
+    "SovosLibrary.SF.API": "[1.0.1]",
     "UiPath.Excel.Activities": "[2.20.1]",
     "UiPath.Form.Activities": "[2.0.3]",
     "UiPath.Mail.Activities": "[1.20.3]",
@@ -17,7 +18,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.4.0.0",
-  "projectVersion": "1.0.7",
+  "projectVersion": "1.0.8",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -104,7 +105,8 @@
         "fileName": "Tests\\Main\\Test_GetEdiContent.xaml"
       }
     ],
-    "modernBehavior": false
+    "modernBehavior": false,
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
