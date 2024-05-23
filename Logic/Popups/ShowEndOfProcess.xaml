@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ShowEndOfProcess" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:SendMailsViaIMR;assembly=SendMailsViaIMR" xmlns:sa="clr-namespace:SendMailsViaIMR.Advanced;assembly=SendMailsViaIMR" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ShowEndOfProcess" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:s1="clr-namespace:SovosLibrary_SendMailViaIMR;assembly=SovosLibrary.SendMailViaIMR" xmlns:sa="clr-namespace:SovosLibrary_SendMailViaIMR.Advanced;assembly=SovosLibrary.SendMailViaIMR" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Used in case transactions are stored in a DataTable, for example, after being retrieved from a spreadsheet." Name="in_dt_TransactionData" Type="InArgument(sd:DataTable)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -17,7 +17,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1228,3389</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>639.333333333333,3842</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ShowEndOfProcess_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -58,65 +58,71 @@
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Management.Automation</x:String>
       <x:String>System.Dynamic</x:String>
+      <x:String>SovosLibrary_SendMailViaIMR.Advanced</x:String>
+      <x:String>SovosLibrary_SendMailViaIMR</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
-      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>SendMailsViaIMR</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
-      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
-      <AssemblyReference>System.Core</AssemblyReference>
-      <AssemblyReference>System.Xml</AssemblyReference>
-      <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>PresentationFramework</AssemblyReference>
-      <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>PresentationCore</AssemblyReference>
-      <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
-      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>SendMailsViaIMR</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Management.Automation</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>SovosLibrary.SendMailViaIMR</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ShowEndOfProcess" sap:VirtualizedContainerService.HintSize="648,3324" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ShowEndOfProcess" sap:VirtualizedContainerService.HintSize="649.333333333333,3777.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="SuccessfullItems" />
       <Variable x:TypeArguments="x:Int32" Name="ExceptionItems" />
       <Variable x:TypeArguments="x:Int32" Name="NotProcessedItems" />
       <Variable x:TypeArguments="x:String" Name="OverviewMessage" />
+      <Variable x:TypeArguments="x:String" Name="UserMailAddress" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Popup_ShowEndOfProcess starts&quot;]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign - Counters" sap:VirtualizedContainerService.HintSize="586,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="587.333333333333,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Popup_ShowEndOfProcess starts&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign - Counters" sap:VirtualizedContainerService.HintSize="587.333333333333,162" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -146,21 +152,21 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <If Condition="[in_boolExceptionInInitialization]" DisplayName="If there was exception in initialization phase" sap:VirtualizedContainerService.HintSize="586,270" sap2010:WorkflowViewState.IdRef="If_2">
+    <sa:GetMailAddressCurrentUser DisplayName="GetMailAddressCurrentUser - UserMailAddress (GetMailAddressCurrentUser)" sap:VirtualizedContainerService.HintSize="587.333333333333,82" sap2010:WorkflowViewState.IdRef="GetMailAddressCurrentUser_1" out_ActiveMailAddress="[UserMailAddress]" />
+    <If Condition="[in_boolExceptionInInitialization]" DisplayName="If there was exception in initialization phase" sap:VirtualizedContainerService.HintSize="587.333333333333,886" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Show error message" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <Sequence DisplayName="Show error message" sap:VirtualizedContainerService.HintSize="496,690" sap2010:WorkflowViewState.IdRef="Sequence_12">
           <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="UserMailAddress" />
             <Variable x:TypeArguments="x:String" Name="ExceptionMessage" />
             <Variable x:TypeArguments="x:String" Name="ExceptionMessageHtml" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign ExceptionMessage" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign DisplayName="Assign ExceptionMessage" sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[ExceptionMessage]</OutArgument>
             </Assign.To>
@@ -169,7 +175,7 @@
 in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign ExceptionMessageHtml" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign DisplayName="Assign ExceptionMessageHtml" sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[ExceptionMessageHtml]</OutArgument>
             </Assign.To>
@@ -178,31 +184,12 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
 "&lt;b&gt;&lt;span style=""color: #ff0000""&gt;"+in_SystemException.Message + vbCrLf + "&lt;/span&gt;&lt;/b&gt;Source: &lt;b&gt;" + in_SystemException.Source + "&lt;/b&gt;"]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[ExceptionMessage]" />
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_6">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,196" sap2010:WorkflowViewState.IdRef="Sequence_13">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Buttons="Ok" DisplayName="Message Box Exception case" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[in_Config(&quot;MessageBox_ProcessWithExceptions&quot;).ToString + vbCrLf + vbCrLf +&#xA;in_SystemException.Message + vbCrLf + &quot;Source: &quot; + in_SystemException.Source]" />
-              </Sequence>
-            </ui:CommentOut.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
-          <sa:GetMailAddressCurrentUser DisplayName="GetMailAddressCurrentUser - UserMailAddress" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="GetMailAddressCurrentUser_3" out_ActiveMailAddress="[UserMailAddress]" />
-          <s1:SendMail in_ListAttachments="{x:Null}" DisplayName="SendMail to User - Exception case" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="SendMail_2" in_Bcc="[in_Config(&quot;Mail_Bcc&quot;).ToString]" in_Body="[ExceptionMessageHtml]" in_Cc="[in_Config(&quot;Mail_Cc&quot;).ToString]" in_MailAddressTo="[UserMailAddress]" in_Subject="[in_Config(&quot;Mail_Subject&quot;).ToString]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[ExceptionMessage]" />
+          <s1:SendMail in_ListAttachments="{x:Null}" DisplayName="SendMail to User - Exception case" sap:VirtualizedContainerService.HintSize="434,191.333333333333" sap2010:WorkflowViewState.IdRef="SendMail_3" in_Bcc="[in_Config(&quot;Mail_Bcc&quot;).ToString]" in_Body="[ExceptionMessageHtml]" in_Cc="[in_Config(&quot;Mail_Cc&quot;).ToString]" in_MailAddressTo="[UserMailAddress]" in_Subject="[in_Config(&quot;Mail_Subject&quot;).ToString]" />
         </Sequence>
       </If.Then>
     </If>
-    <If Condition="[in_dt_TransactionData IsNot Nothing]" DisplayName="If datatable is not nothing" sap:VirtualizedContainerService.HintSize="586,2436" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_dt_TransactionData IsNot Nothing]" DisplayName="If datatable is not nothing" sap:VirtualizedContainerService.HintSize="587.333333333333,2144.66666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -210,7 +197,7 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Filter datatable by status" sap:VirtualizedContainerService.HintSize="550,2247" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Filter datatable by status" sap:VirtualizedContainerService.HintSize="550.666666666667,1948.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="dtSuccessfull" />
             <Variable x:TypeArguments="sd:DataTable" Name="dtExceptionStatus" />
@@ -224,7 +211,7 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:FilterDataTable DataTable="[in_dt_TransactionData]" DisplayName="Filter Data Table by Successfull status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="488,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtSuccessfull]" SelectColumnsMode="Remove">
+          <ui:FilterDataTable DataTable="[in_dt_TransactionData]" DisplayName="Filter Data Table by Successfull status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="488.666666666667,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtSuccessfull]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
@@ -243,7 +230,7 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
               </scg:List>
             </ui:FilterDataTable.SelectColumns>
           </ui:FilterDataTable>
-          <ui:FilterDataTable sap2010:Annotation.AnnotationText="Starts with SystemException Log Or&#xA;Starts with BusinessException Log" DataTable="[in_dt_TransactionData]" DisplayName="Filter Data Table by Exception status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="488,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtExceptionStatus]" SelectColumnsMode="Remove">
+          <ui:FilterDataTable sap2010:Annotation.AnnotationText="Starts with SystemException Log Or&#xA;Starts with BusinessException Log" DataTable="[in_dt_TransactionData]" DisplayName="Filter Data Table by Exception status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="488.666666666667,209.333333333333" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtExceptionStatus]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument BooleanOperator="And" Operator="STARTSWITH">
@@ -275,7 +262,7 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:FilterDataTable>
-          <ui:FilterDataTable DataTable="[in_dt_TransactionData]" DisplayName="Filter Data Table by Return and Status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="488,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[dtStatus]" SelectColumnsMode="Keep">
+          <ui:FilterDataTable DataTable="[in_dt_TransactionData]" DisplayName="Filter Data Table by Return and Status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="488.666666666667,164" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[dtStatus]" SelectColumnsMode="Keep">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
@@ -291,7 +278,7 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
               </scg:List>
             </ui:FilterDataTable.SelectColumns>
           </ui:FilterDataTable>
-          <ui:MultipleAssign DisplayName="Multiple Assign - Results" sap:VirtualizedContainerService.HintSize="488,194" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+          <ui:MultipleAssign DisplayName="Multiple Assign - Results" sap:VirtualizedContainerService.HintSize="488.666666666667,192.666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
             <ui:MultipleAssign.AssignOperations>
               <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                 <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -332,17 +319,17 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
-          <ui:OutputDataTable DataTable="[dtStatus]" DisplayName="Output Data Table - strStatus" sap:VirtualizedContainerService.HintSize="488,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[strStatusTable]" />
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[OverviewMessage + strStatusTable]" />
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488,52" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+          <ui:OutputDataTable DataTable="[dtStatus]" DisplayName="Output Data Table - strStatus" sap:VirtualizedContainerService.HintSize="488.666666666667,82" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[strStatusTable]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="488.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[OverviewMessage + strStatusTable]" />
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="488.666666666667,54" sap2010:WorkflowViewState.IdRef="CommentOut_7">
             <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_14">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\CompressOutputFolder.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Logic\CompressOutputFolder.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Logic\CompressOutputFolder.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Logic\CompressOutputFolder.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="in_PathOutputFolder">[in_Config("PathUserOutputFolder").ToString]</InArgument>
                     <OutArgument x:TypeArguments="x:String" x:Key="out_PathZipCompressedFolder">[PathZip]</OutArgument>
@@ -357,68 +344,19 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:CommentOut>
-          <TryCatch DisplayName="Try Catch SendMailWithDatatable to User" sap:VirtualizedContainerService.HintSize="488,913" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Try Catch SendMailWithDatatable to User" sap:VirtualizedContainerService.HintSize="488.666666666667,596" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <Sequence DisplayName="SendMailWithDatatable to User" sap:VirtualizedContainerService.HintSize="450,685" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="x:String" Name="UserMailAddress" />
-                </Sequence.Variables>
+              <Sequence DisplayName="SendMailWithDatatable to User" sap:VirtualizedContainerService.HintSize="450,356.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
-                  <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,350" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <sa:SendMailWithDatatableAndLabels DisplayName="SendMailWithDatatableAndLabels to user" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="SendMailWithDatatableAndLabels_3" in_Bcc="[in_Config(&quot;Mail_Bcc&quot;).ToString]" in_Body_Footer="[OverviewMessage + in_Config(&quot;Mail_HtmlBody_Footer&quot;).ToString]" in_Body_Header="[in_Config(&quot;Mail_HtmlBody_Header&quot;).ToString]" in_Cc="[in_Config(&quot;Mail_Cc&quot;).ToString]" in_ListAttachments="[new List(Of String)({PathZip})]" in_MailAddressTo="[UserMailAddress]" in_Subject="[in_Config(&quot;Mail_Subject&quot;).ToString]" in_dtTableToAttach="[dtStatus]">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </sa:SendMailWithDatatableAndLabels>
-                    </Sequence>
-                  </ui:CommentOut.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:CommentOut>
-                <sa:GetMailAddressCurrentUser DisplayName="GetMailAddressCurrentUser - UserMailAddress" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="GetMailAddressCurrentUser_1" out_ActiveMailAddress="[UserMailAddress]" />
-                <sa:SendMailWithDatatableAndLabels in_ListAttachments="{x:Null}" DisplayName="SendMailWithDatatableAndLabels to user" sap:VirtualizedContainerService.HintSize="388,239" sap2010:WorkflowViewState.IdRef="SendMailWithDatatableAndLabels_2" in_Bcc="[in_Config(&quot;Mail_Bcc&quot;).ToString]" in_Body_Footer="[OverviewMessage + in_Config(&quot;Mail_HtmlBody_Footer&quot;).ToString]" in_Body_Header="[in_Config(&quot;Mail_HtmlBody_Header&quot;).ToString]" in_Cc="[in_Config(&quot;Mail_Cc&quot;).ToString]" in_MailAddressTo="[UserMailAddress]" in_Subject="[in_Config(&quot;Mail_Subject&quot;).ToString]" in_dtTableToAttach="[dtStatus]" />
-                <ui:CommentOut sap2010:Annotation.AnnotationText="Delete output folder" DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="CommentOut_8">
-                  <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,287" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:Comment sap:VirtualizedContainerService.HintSize="388,56" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Delete Zip file and Output folder" />
-                      <ui:DeleteFolderX DisplayName="Delete output Folder" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[in_Config(&quot;PathUserOutputFolder&quot;).ToString]" Recursive="True" />
-                    </Sequence>
-                  </ui:CommentOut.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:CommentOut>
+                <sa:SendMailWithDatatableAndLabels in_ListAttachments="{x:Null}" DisplayName="SendMailWithDatatableAndLabels to user" sap:VirtualizedContainerService.HintSize="388,246" sap2010:WorkflowViewState.IdRef="SendMailWithDatatableAndLabels_4" in_Bcc="[in_Config(&quot;Mail_Bcc&quot;).ToString]" in_Body_Footer="[OverviewMessage + in_Config(&quot;Mail_HtmlBody_Footer&quot;).ToString]" in_Body_Header="[in_Config(&quot;Mail_HtmlBody_Header&quot;).ToString]" in_Cc="[in_Config(&quot;Mail_Cc&quot;).ToString]" in_MailAddressTo="[UserMailAddress]" in_Subject="[in_Config(&quot;Mail_Subject&quot;).ToString]" in_dtTableToAttach="[dtStatus]" />
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -429,7 +367,7 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[&quot;There was an exception trying to send email. &quot; + exception.Message +&quot;Source: &quot; + exception.Source + &quot;. The output folder was not deleted. Continue with the process.&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[&quot;There was an exception trying to send email. &quot; + exception.Message +&quot;Source: &quot; + exception.Source + &quot;. The output folder was not deleted. Continue with the process.&quot;]" />
                 </ActivityAction>
               </Catch>
             </TryCatch.Catches>
@@ -446,6 +384,6 @@ in_SystemException.Message + vbCrLf + "Source: " + in_SystemException.Source]</I
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Popup_ShowEndOfProcess ends&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="587.333333333333,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Popup_ShowEndOfProcess ends&quot;]" />
   </Sequence>
 </Activity>
